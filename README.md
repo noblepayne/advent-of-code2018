@@ -2,6 +2,8 @@
 
 2018's Advent of Code in Clojurescript. Choose your day from the dropdown, input your input, and get solving!
 
+Use the app at [https://noblepayne.github.io/advent-of-code2018/](https://noblepayne.github.io/advent-of-code2018/)
+
 ## Development
 
 To get an interactive development environment run:

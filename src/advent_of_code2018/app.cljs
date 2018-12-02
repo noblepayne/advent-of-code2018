@@ -46,7 +46,8 @@
         ^{:key k} [:option k])]]
    [:div
      [:button {:on-click (:solve-fn @state)} "solve"]
-     [:input {:type :file :id "input-file" :on-change load-file!}]]])
+     [:input {:type :file :id "input-file" :on-change load-file!}]]
+   [:p "Find the source: " [:a {:href "https://github.com/noblepayne/advent-of-code2018"} "https://github.com/noblepayne/advent-of-code2018"]]])
 
 
 (defn mount [el]
