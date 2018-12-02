@@ -24,7 +24,7 @@
     (->> input
          (mapcat
           (fn [boxid]
-            (let [res (remove #{boxid} (bk/query tree boxid 1))]
+            (let [res (bk/query tree boxid 1)]
               (map #(set [%1 %2]) (repeat boxid) res))))
          (filter second)
          (into #{}))))
