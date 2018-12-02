@@ -28,9 +28,9 @@
          old-output (:output state)
          d (distance word root-word)
          bounds (range (- d difference) (inc (+ d difference)))
-         edges (map #(get (:edges root) %) bounds)
-         new-edges (filter identity (into (:edges state) edges))
-         new-output (if (<= d difference)
+         edges (filter identity (map #(get (:edges root) %) bounds))
+         new-edges (into (:edges state) edges)
+         new-output (if (= d difference)
                       (conj old-output root-word)
                       old-output)
          new-state {:edges (rest new-edges) :output new-output}]

@@ -12,20 +12,20 @@
       true
       false)))
 
-(defn find-boxes [box-combos]
+(defn old-find-boxes [box-combos]
   (filter string-match? box-combos))
 
 (defn old-make-boxes [input]
   (combo/combinations input 2))
 
-(defn make-boxes [input]
+(defn find-boxes [input]
   (let [tree (bk/create (first input))
         tree (reduce #(bk/insert %1 %2) (rest input))]
     (->> input
          (mapcat
           (fn [boxid]
             (let [res (bk/query tree boxid 1)]
-              (map #(set [boxid %2]) res))))
+              (map #(set [boxid %1]) res))))
          (filter second)
          (into #{}))))
 
@@ -38,7 +38,6 @@
 (defn solve [input]
   (->> input
        d2p0/parse-input
-       make-boxes
-       (map vec)
        find-boxes
+       (map vec)
        find-common-letters))
