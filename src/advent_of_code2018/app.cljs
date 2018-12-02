@@ -1,39 +1,64 @@
 (ns ^:figwheel-hooks advent-of-code2018.app
   (:require
    [goog.dom :as gdom]
-   [reagent.core :as reagent :refer [atom]]))
+   [reagent.core :as reagent :refer [atom]]
+   ;; days
+   [advent-of-code2018.d0p0 :as d0p0]
+   [advent-of-code2018.d1p0 :as d1p0]
+   [advent-of-code2018.d1p1 :as d1p1]
+   [advent-of-code2018.d2p0 :as d2p0]
+   [advent-of-code2018.d2p1 :as d2p1]))
 
-(println "This text is printed from src/advent_of_code2018/app.cljs. Go ahead and edit it and see reloading in action.")
+(def days
+  {:d0p0 {:prompt "2016 day1 as practice." :solve-fn d0p0/solve}
+   :d1p0 {:prompt "2018 day1 placeholder" :solve-fn d1p0/solve}
+   :d1p1 {:prompt "2018 day1 part 2" :solve-fn d1p1/solve}
+   :d2p0 {:prompt "" :solve-fn d2p0/solve}
+   :d2p1 {:prompt "" :solve-fn d2p1/solve}})
 
-(defn multiply [a b] (* a b))
-
-
-;; define your app data so that it doesn't get over-written on reload
-(defonce app-state (atom {:text "Hello world!"}))
+(defonce state (atom {:solve-fn d0p0/solve}))
 
 (defn get-app-element []
   (gdom/getElement "app"))
 
-(defn hello-world []
+(defn load-file! []
+  (let [reader (js/FileReader.)
+        el     (gdom/getElement "input-file")
+        file   (aget (.-files el) 0)]
+    (set! (.-onload reader)
+          (fn [event]
+            (swap! state assoc :input (-> event .-target .-result))))
+    (.readAsText reader file)))
+
+(defn update-solve-fn! [event]
+  (let [picked-day (-> event .-target .-value)
+        solve-fn (-> days (get (keyword picked-day)) :solve-fn)]
+    (swap! state assoc :solve-fn #(js/alert (solve-fn (:input @state))))))
+
+
+(defn main-app []
   [:div
-   [:h1 (:text @app-state)]
-   [:h3 "Edit this in src/advent_of_code2018/app.cljs and watch it change!"]])
+   [:h1 "Advent of Code 2018"]
+   [:h3 "Select Day"]
+   [:div
+     [:select {:id :daypicker :on-change update-solve-fn!}
+      (for [k (keys days)]
+        ^{:key k} [:option k])]]
+   [:div
+     [:button {:on-click (:solve-fn @state)} "solve"]
+     [:input {:type :file :id "input-file" :on-change load-file!}]]])
+
 
 (defn mount [el]
-  (reagent/render-component [hello-world] el))
+  (reagent/render-component [main-app] el))
 
 (defn mount-app-element []
   (when-let [el (get-app-element)]
     (mount el)))
 
-;; conditionally start your application based on the presence of an "app" element
-;; this is particularly helpful for testing this ns without launching the app
 (mount-app-element)
 
-;; specify reload hook with ^;after-load metadata
 (defn ^:after-load on-reload []
   (mount-app-element)
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
   ;; (swap! app-state update-in [:__figwheel_counter] inc)
 )
