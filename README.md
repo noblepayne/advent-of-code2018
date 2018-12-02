@@ -1,10 +1,6 @@
 # advent-of-code2018.app
 
-FIXME: Write a one-line description of your library/project.
-
-## Overview
-
-FIXME: Write a paragraph about the library/project and highlight its goals.
+2018's Advent of Code in Clojurescript. Choose your day from the dropdown, input your input, and get solving!
 
 ## Development
 
@@ -32,6 +28,6 @@ To create a production build run:
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 Wesley Payne
 
 Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
