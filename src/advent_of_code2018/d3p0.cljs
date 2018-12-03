@@ -59,7 +59,7 @@
   (<= 2 (count ids)))
 
 (defn solve
-  "Count the number of overlapping claims."
+  "Count the number of overlapping grid points."
   [input]
   (->> input
        parse-input
