@@ -7,14 +7,18 @@
    [advent-of-code2018.d1p0 :as d1p0]
    [advent-of-code2018.d1p1 :as d1p1]
    [advent-of-code2018.d2p0 :as d2p0]
-   [advent-of-code2018.d2p1 :as d2p1]))
+   [advent-of-code2018.d2p1 :as d2p1]
+   [advent-of-code2018.d3p0 :as d3p0]
+   [advent-of-code2018.d3p1 :as d3p1]))
 
 (def days
   {:d0p0 {:prompt "2016 day1 as practice." :solve-fn d0p0/solve}
    :d1p0 {:prompt "2018 day1 placeholder" :solve-fn d1p0/solve}
    :d1p1 {:prompt "2018 day1 part 2" :solve-fn d1p1/solve}
    :d2p0 {:prompt "" :solve-fn d2p0/solve}
-   :d2p1 {:prompt "" :solve-fn d2p1/solve}})
+   :d2p1 {:prompt "" :solve-fn d2p1/solve}
+   :d3p0 {:prompt "" :solve-fn d3p0/solve}
+   :d3p1 {:prompt "" :solve-fn d3p1/solve}})
 
 (defonce state (atom {:solve-fn d0p0/solve}))
 
