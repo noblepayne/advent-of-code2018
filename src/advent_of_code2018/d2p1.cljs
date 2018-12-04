@@ -1,7 +1,7 @@
 (ns advent-of-code2018.d2p1
   (:require [clojure.string :as str]
             [advent-of-code2018.d2p0 :as d2p0]
-            [clojure.math.combinatorics :as combo]
+            ;[clojure.math.combinatorics :as combo]
             [advent-of-code2018.bk :as bk]))
 
 (defn string-match? [[s1 s2]]
@@ -12,11 +12,13 @@
       true
       false)))
 
-(defn old-find-boxes [box-combos]
-  (filter string-match? box-combos))
+(comment
+  (defn old-find-boxes [box-combos]
+    (filter string-match? box-combos))
 
-(defn old-make-boxes [input]
-  (combo/combinations input 2))
+  (defn old-make-boxes [input]
+    (combo/combinations input 2))
+)
 
 (defn find-boxes [input]
   (let [tree (bk/create (first input))

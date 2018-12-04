@@ -26,7 +26,7 @@
    :d4p1 {:prompt "" :solve-fn d4p1/solve}
    })
 
-(defonce state (atom {:solve-fn d0p0/solve}))
+(defonce state (atom {:solve-fn d0p0/solve :answer ""}))
 
 (defn get-app-element []
   (gdom/getElement "app"))
@@ -43,7 +43,7 @@
 (defn update-solve-fn! [event]
   (let [picked-day (-> event .-target .-value)
         solve-fn (-> days (get (keyword picked-day)) :solve-fn)]
-    (swap! state assoc :solve-fn #(js/alert (solve-fn (:input @state))))))
+    (swap! state assoc :solve-fn #(swap! state assoc :answer (solve-fn (:input @state))))))
 
 
 (defn main-app []
@@ -55,9 +55,14 @@
       (for [k (keys days)]
         ^{:key k} [:option k])]]
    [:div
-     [:button {:on-click (:solve-fn @state)} "solve"]
      [:input {:type :file :id "input-file" :on-change load-file!}]]
-   [:p "Find the source: " [:a {:href "https://github.com/noblepayne/advent-of-code2018"} "https://github.com/noblepayne/advent-of-code2018"]]])
+     [:br]
+     [:button {:on-click (:solve-fn @state)} "solve"]
+     [:br]
+     [:p "Answer: " (:answer @state)]
+   [:p "Find the source: "
+    [:a {:href "https://github.com/noblepayne/advent-of-code2018"}
+        "https://github.com/noblepayne/advent-of-code2018"]]])
 
 
 (defn mount [el]
