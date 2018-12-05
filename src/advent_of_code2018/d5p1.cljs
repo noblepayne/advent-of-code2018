@@ -10,7 +10,7 @@
      (.toUpperCase l2)))
 
 (defn remove-letter [letter coll]
-  (remove (partial same-letter? letter) coll))
+  (remove #(same-letter? letter %) coll))
 
 (defn make-removal-map [polymer]
   (into {}
