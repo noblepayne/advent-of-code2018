@@ -12,6 +12,8 @@
    [advent-of-code2018.d3p1 :as d3p1]
    [advent-of-code2018.d4p0 :as d4p0]
    [advent-of-code2018.d4p1 :as d4p1]
+   [advent-of-code2018.d5p0 :as d5p0]
+   [advent-of-code2018.d5p1 :as d5p1]
    ))
 
 (def days
@@ -24,6 +26,8 @@
    :d3p1 {:prompt "" :solve-fn d3p1/solve}
    :d4p0 {:prompt "" :solve-fn d4p0/solve}
    :d4p1 {:prompt "" :solve-fn d4p1/solve}
+   :d5p0 {:prompt "" :solve-fn d5p0/solve}
+   :d5p1 {:prompt "" :solve-fn d5p1/solve}
    })
 
 (defonce state (atom {:solve-fn d0p0/solve :answer ""}))
@@ -54,6 +58,7 @@
      [:select {:id :daypicker :on-change update-solve-fn!}
       (for [k (keys days)]
         ^{:key k} [:option k])]]
+   [:h3 "Select Input"]
    [:div
      [:input {:type :file :id "input-file" :on-change load-file!}]]
      [:br]

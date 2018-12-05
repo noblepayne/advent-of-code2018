@@ -28,5 +28,5 @@
 
  ;; Logging output gets printed to the REPL, if you want to redirect it to a file:
  ;; :log-file "figwheel-main.log"
- :repl-eval-timeout 120000
+ :repl-eval-timeout 1200000
 }
