@@ -68,14 +68,16 @@
    [:right "^"]    ">"
    [:right "v"]    "<"})
 
-(defn move-cart [state [pos cart]]
+(defn move-cart [cleanup? state [pos cart]]
   (let [new-pos (mapv + pos (walk-dir (:dir cart)))
         new-c   (get-in state [:world new-pos])
         crash? (or (contains? (:carts state) new-pos)
                    (= "X" new-c))]
     (if crash?
       (let [new-state
-            (update-in state [:world new-pos] (fn [_] "X"))
+            (if cleanup?
+              state
+              (update-in state [:world new-pos] (fn [_] "X")))
             new-state
             (update-in new-state [:crashes] #(conj % new-pos))
             new-state
@@ -96,10 +98,10 @@
             (update-in new-state [:carts] #(assoc % new-pos new-cart))]
         new-state))))
 
-(defn tick [state]
+(defn tick [cleanup? state]
   (reduce (fn [state cart]
             (if (contains? (:carts state) (first cart))
-              (move-cart state cart)
+              (move-cart cleanup? state cart)
               state))
           state
           (:carts state)))
@@ -123,7 +125,7 @@
   (->> input
        parse-input
        init-state
-       (iterate tick) 
+       (iterate (partial tick false)) 
        (drop-while #(empty? (:crashes %)))
        first
        :crashes
