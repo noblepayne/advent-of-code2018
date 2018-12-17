@@ -14,6 +14,13 @@
    [advent-of-code2018.d4p1 :as d4p1]
    [advent-of-code2018.d5p0 :as d5p0]
    [advent-of-code2018.d5p1 :as d5p1]
+   [advent-of-code2018.d6p0 :as d6p0]
+   [advent-of-code2018.d7p0 :as d7p0]
+   [advent-of-code2018.d10p0 :as d10p0]
+   [advent-of-code2018.d11p0 :as d11p0]
+   [advent-of-code2018.d12p0 :as d12p0]
+   [advent-of-code2018.d13p0 :as d13p0]
+   [advent-of-code2018.d13p1 :as d13p1]
    ))
 
 (def days
@@ -28,6 +35,13 @@
    :d4p1 {:prompt "" :solve-fn d4p1/solve}
    :d5p0 {:prompt "" :solve-fn d5p0/solve}
    :d5p1 {:prompt "" :solve-fn d5p1/solve}
+   :d6p0 {:prompt "" :solve-fn d6p0/solve}
+   :d7p0 {:prompt "" :solve-fn d7p0/solve}
+   :d10p0 {:prompt "" :solve-fn d10p0/solve}
+   :d11p0 {:prompt "" :solve-fn d11p0/solve}
+   :d12p0 {:prompt "" :solve-fn d12p0/solve}
+   :d13p0 {:prompt "" :solve-fn d13p0/solve}
+   :d13p1 {:prompt "" :solve-fn d13p1/solve}
    })
 
 (defonce state (atom {:solve-fn d0p0/solve :answer ""}))
