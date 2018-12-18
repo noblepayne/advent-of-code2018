@@ -21,6 +21,9 @@
    [advent-of-code2018.d12p0 :as d12p0]
    [advent-of-code2018.d13p0 :as d13p0]
    [advent-of-code2018.d13p1 :as d13p1]
+   [advent-of-code2018.d17p0 :as d17p0]
+   [advent-of-code2018.d18p0 :as d18p0]
+   [advent-of-code2018.d18p1 :as d18p1]
    ))
 
 (def days
@@ -42,6 +45,9 @@
    :d12p0 {:prompt "" :solve-fn d12p0/solve}
    :d13p0 {:prompt "" :solve-fn d13p0/solve}
    :d13p1 {:prompt "" :solve-fn d13p1/solve}
+   :d17p0 {:prompt "" :solve-fn d17p0/solve}
+   :d18p0 {:prompt "" :solve-fn d18p0/solve}
+   :d18p1 {:prompt "" :solve-fn d18p1/solve}
    })
 
 (defonce state (atom {:solve-fn d0p0/solve :answer ""}))
