@@ -16,11 +16,13 @@
    [advent-of-code2018.d5p1 :as d5p1]
    [advent-of-code2018.d6p0 :as d6p0]
    [advent-of-code2018.d7p0 :as d7p0]
+   [advent-of-code2018.d7p1 :as d7p1]
    [advent-of-code2018.d10p0 :as d10p0]
    [advent-of-code2018.d11p0 :as d11p0]
    [advent-of-code2018.d12p0 :as d12p0]
    [advent-of-code2018.d13p0 :as d13p0]
    [advent-of-code2018.d13p1 :as d13p1]
+   [advent-of-code2018.d14p0 :as d14p0]
    [advent-of-code2018.d17p0 :as d17p0]
    [advent-of-code2018.d18p0 :as d18p0]
    [advent-of-code2018.d18p1 :as d18p1]
@@ -40,11 +42,13 @@
    :d5p1 {:prompt "" :solve-fn d5p1/solve}
    :d6p0 {:prompt "" :solve-fn d6p0/solve}
    :d7p0 {:prompt "" :solve-fn d7p0/solve}
+   :d7p1 {:prompt "" :solve-fn d7p1/solve}
    :d10p0 {:prompt "" :solve-fn d10p0/solve}
    :d11p0 {:prompt "" :solve-fn d11p0/solve}
    :d12p0 {:prompt "" :solve-fn d12p0/solve}
    :d13p0 {:prompt "" :solve-fn d13p0/solve}
    :d13p1 {:prompt "" :solve-fn d13p1/solve}
+   :d14p0 {:prompt "" :solve-fn d14p0/solve}
    :d17p0 {:prompt "" :solve-fn d17p0/solve}
    :d18p0 {:prompt "" :solve-fn d18p0/solve}
    :d18p1 {:prompt "" :solve-fn d18p1/solve}
