@@ -17,6 +17,8 @@
    [advent-of-code2018.d6p0 :as d6p0]
    [advent-of-code2018.d7p0 :as d7p0]
    [advent-of-code2018.d7p1 :as d7p1]
+   [advent-of-code2018.d8p0 :as d8p0]
+   [advent-of-code2018.d8p1 :as d8p1]
    [advent-of-code2018.d10p0 :as d10p0]
    [advent-of-code2018.d11p0 :as d11p0]
    [advent-of-code2018.d12p0 :as d12p0]
@@ -43,6 +45,8 @@
    :d6p0 {:prompt "" :solve-fn d6p0/solve}
    :d7p0 {:prompt "" :solve-fn d7p0/solve}
    :d7p1 {:prompt "" :solve-fn d7p1/solve}
+   :d8p0 {:prompt "" :solve-fn d8p0/solve}
+   :d8p1 {:prompt "" :solve-fn d8p1/solve}
    :d10p0 {:prompt "" :solve-fn d10p0/solve}
    :d11p0 {:prompt "" :solve-fn d11p0/solve}
    :d12p0 {:prompt "" :solve-fn d12p0/solve}
