@@ -6,13 +6,15 @@
   (js/parseInt s))
 
 (defn parse-input [input]
-  (mapv str->int
+  (map str->int
        (str/split
          (str/trim-newline input)
          #" ")))
 
-(def test1 [1 3 1 1 0 1 99 2 1 1 2])
+;; example input
+:input [1 3 1 1 0 1 99 2 1 1 2]
 
+;; should produce
 {:0 {:metadata [1 1 2]
      :children [1]}
  :1 {:metadata [2]
@@ -20,8 +22,7 @@
  :2 {:metadata [99]
      :children []}}
 
-:input [1 3 1 1 0 1 99 2 1 1 2]
-
+;; example state evolution
 {:0 {:metadata [] :children [] :m-to 3 :c-to 1}}
 :to-proc '(:0)
 :input [1 1 0 1 99 2 1 1 2]
@@ -54,6 +55,7 @@
  :2 {:metadata [99] :children [] :m-to 0 :c-to 0}}
 :to-proc []
 :input []
+
 
 (defn prepare-state [input]
   (let [root (random-uuid)
@@ -95,6 +97,5 @@
        prepare-state
        build-tree
        vals
-       (map :meta)
-       flatten
+       (mapcat :meta)
        (reduce +)))
